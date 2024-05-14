@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&display=swap');
+:root {
+    font-size: 14px;
+    font-family: "Montserrat";
+}
+body {
+    margin:0;
+    padding:0;
+    background-color: hsl(30, 38%, 92%);
+}
+* {
+    margin:0;
+    padding:0;
+}
+.card p {
+    color: hsl(228, 12%, 48%);
+}
+.card h1 {
+    font-family:"Fraunces";
+}
+
+
+.container {
+    box-sizing: border-box;
+    padding: 1rem;
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    flex: 0 1 375px;
+    background-color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    /* we use a height of auto */
+    display:flex;
+    flex-direction: column;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card img {
+    max-width: 100%;
+}
+
+.card .card-text {
+    box-sizing: border-box;
+    padding:1em;
+    display:flex;
+    flex-direction: column;
+    gap:.75em;
+}
+
+
+
+.card .category {
+    letter-spacing: .25em;
+}
+
+
+
+.card .title {
+    color: hsl(212, 21%, 14%);
+}
+
+.card .description {
+    margin-bottom:1em;
+}
+
+.card .pricing {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    flex-wrap:wrap;
+}
+
+.card .pricing .discount-price {
+    color:hsl(158, 36%, 37%);
+}
+
+.card .pricing .orig-price {
+    text-decoration: line-through;
+}
+
+.card .add {
+    background-color:hsl(158, 36%, 37%);
+    color:white;
+    border:none;
+    border-radius:.75em;
+    padding:1em;
+    display:flex;
+    justify-content:center;
+    gap:.75em;
+    transition: transform .1s;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.card .add p {
+    font-family: "Montserrat";
+    color:white;
+}
+
+.card .add:hover {
+    transform: scale(1.01);
+}
+
+.card .add:active {
+    transform: scale(.99)
+}
+
+@media screen and (min-width: 600px) {
+    .card {
+        flex-direction: row;
+        flex: 0 1 700px;
+    }
+    .card .product {
+        content:url("./images/image-product-desktop.jpg");
+        max-width: 50%;
+    }
+
+    .card .card-text {
+        justify-content: center;
+    }
+}
