@@ -1,0 +1,110 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:200,400,600&display=swap);
+
+:root {
+    font-size:15px;
+    font-family:"Poppins", sans-serif;
+}
+* {
+    margin:0;
+    padding:0;
+}
+body {
+    background-color:hsl(0, 0%, 98%);
+}
+
+p {
+    color:hsl(229, 6%, 66%);
+    font-weight:200;
+}
+
+.site-container {
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;;
+    text-align:center;
+    padding-block:3rem;
+    padding-inline:1rem;
+    gap:5em;
+}
+
+.top-content {
+    display: flex;
+    flex-direction:column;
+}
+
+.slogan1 {
+    font-weight:200;
+    color:hsl(229, 6%, 66%);
+}
+.slogan2 {
+    color:hsl(234, 12%, 34%);
+    margin-bottom:1rem;
+}
+.desc {
+    max-width:450px;
+}
+
+.cards-container {
+    max-width: 350px;
+    display:grid;
+    grid-template-areas: "s"
+                         "b"
+                         "k"
+                         "c";
+    gap:1.5em;
+}
+.card {
+    border-radius:.35em;
+    box-sizing:border-box;
+    padding:1em;
+    background-color:white;
+    display:flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.card p {
+    margin-bottom:3rem;
+}
+.card img {
+    margin-top:auto;
+    align-self:flex-end;
+    max-width:25%;
+}
+.card.supervisor {
+    border-top:.75rem solid hsl(180, 62%, 55%);
+}
+.card.builder {
+    border-top:.75rem solid hsl(0, 78%, 62%)
+}
+.card.karma {
+    border-top:.75rem solid hsl(34, 97%, 64%)
+}
+.card.calculator {
+    border-top:.75rem solid hsl(212, 86%, 64%)
+}
+
+@media screen and (min-width:600px) {
+    .cards-container {
+        max-width:1000px;
+        grid-template-areas: ". b ."
+                             "s b k"
+                             "s c k"
+                             ". c .";
+        grid-template-columns:1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .card.supervisor {
+        grid-area:s;
+    }
+    .card.builder {
+        grid-area:b;
+    }
+    .card.karma {
+        grid-area:k;
+    }
+    .card.calculator {
+        grid-area:c;
+    }
+}
