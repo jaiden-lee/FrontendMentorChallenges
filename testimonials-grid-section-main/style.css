@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+* {
+    margin:0;
+    padding:0;
+}
+:root {
+    font-size:13px;
+    font-family:"Barlow Semi Condensed";
+}
+body {
+    background-color: hsl(210, 46%, 95%)
+}
+
+/* Grid setup */
+main {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height:100vh;
+}
+.grid-container {
+    max-width:450px;
+    box-sizing:border-box;
+    display:grid;
+    padding-inline:1rem;
+    padding-block:3rem;
+    gap:1rem;
+}
+
+/* General Card Info */
+.card {
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    border-radius:1em;
+    padding:2rem;
+    gap:1em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.card p {
+    opacity: 70%;
+}
+.card .occupation {
+    opacity:50%;
+}
+.card .name {
+    opacity:100%;
+}
+.card .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+.card .header img {
+    border-radius:5rem;
+    border: .15rem solid white;
+    max-width: 3rem;
+}
+.card h3 {
+    font-weight:500;
+}
+
+/* Unique card info */
+.card1 {
+    background-color:hsl(263, 55%, 52%);
+    color:white;
+    background-image:url("./images/bg-pattern-quotation.svg");
+    background-repeat: no-repeat;
+    background-position-x:90%
+}
+.card2 {
+    background-color:hsl(217, 19%, 35%);
+    color:white;
+}
+.card3 {
+    background-color: white;
+    color:hsl(219, 29%, 14%);
+}
+.card4 {
+    background-color: hsl(219, 29%, 14%);;
+    color:white;
+}
+.card4 .header img {
+    border-color:hsl(263, 55%, 52%);
+}
+.card5 {
+    background-color: white;
+    color:hsl(219, 29%, 14%);
+}
+
+@media screen and (min-width: 750px) {
+    /* Grid setup */
+    .grid-container {
+        max-width:1000px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "a a b c"
+                             "d e e c";
+                        
+    }
+    
+    .card1 {
+        grid-area:a;
+    }
+    .card2 {
+        grid-area:b;
+    }
+    .card3 {
+        grid-area:d;
+    }
+    .card4 {
+        grid-area:e;
+    }
+    .card5 {
+        grid-area:c;
+    }
+}

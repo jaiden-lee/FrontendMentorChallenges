@@ -94,6 +94,10 @@ p {
                              ". c .";
         grid-template-columns:1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
+        /* This works since grid has no set height
+        This means 1fr is not distrubting space, but rather
+        it bases on content size and sets the rest equal to it
+        Can also use grid-auto-rows:1fr; */
     }
     .card.supervisor {
         grid-area:s;
