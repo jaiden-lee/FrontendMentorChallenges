@@ -282,6 +282,8 @@ body {
         box-sizing: border-box;
         padding:2rem;
         text-align: left;
+        align-items:center;
+        min-height:80vh;
     }
     .main-content .text-content {
         align-items:flex-start;
