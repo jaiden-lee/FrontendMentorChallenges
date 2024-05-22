@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Contact form</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./main.js"></script>
+
+  <style>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+    :root {
+      font-size:16px;
+    }
+
+    @layer utilities {
+      .required::after {
+        content:" *";
+        color:hsl(169, 82%, 27%);
+        font-size:.875rem;
+      }
+    }
+
+    
+    
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mgray: "hsl(186, 15%, 59%)",
+            dgray: "hsl(187, 24%, 22%)",
+            lgreen: "hsl(148, 38%, 91%)",
+            red: "hsl(0, 66%, 56%)",
+            green: "hsl(169, 82%, 27%)"
+          },
+          fontFamily: {
+            karla: ["Karla", "ui-sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-karla bg-lgreen">
+  <div id="success" class="rounded-lg bg-[rgb(4_47_46)] w-[28rem] max-w-[90%] text-white box-border p-4 absolute left-1/2 top-4 -translate-x-1/2 shadow-md transition-opacity opacity-0 [&.success]:opacity-100">
+    <!-- higher level nunmbers like opacity-50 are defined after opactiy-0 in stylesheet, also custom classes like opacity-[50%] are defined after in the stylesheet; need to use ! flag; !flag doens't; custom classes like opactiy-[50%] are defined last, so it overrides opactiy-1 since its your own custom
+    BUT, classes you define in utility layers is defined before it seems; has precedence over -->
+    <!-- Can add custom classes inline with [&] selector; it acts as a pseudoclass it appears, so it has precedence over all others; defined after pseudoclasses; it works because its basically just 2 classes, saying .class.class; which has 200; pseudoclasses are also 200; but if u do .hover.active, its 300, so overrides -->
+    <div class="flex flex-row gap-3">
+      <img src="./assets/images/icon-success-check.svg" alt="">
+      <h3 class="font-semibold">Message Sent!</h3>
+    </div>
+    <p class="mt-2">Thanks for completing the form. We'll be in touch soon!</p>
+  </div>
+
+  <div class="box-border p-4 flex justify-center items-center min-h-screen">
+    <form id="form" action="#" method="post" onsubmit="event.preventDefault(); processForm();" class="bg-white w-full max-w-[28rem] flex-initial p-4 box-border rounded-xl text-dgray flex flex-col gap-4 shadow-sm sm:max-w-[48rem]">
+      <h1 class="font-semibold text-3xl">Contact Us</h1>
+
+      <div class="flex flex-col gap-4 sm:flex-row sm:justify-between">
+        <div class="flex flex-col group sm:max-w-[50%] w-full" id="fNameContainer">
+          <label for="first-name" class="required">First Name</label>
+          <input oninvalid="validateTextField('fNameContainer'); event.preventDefault();" onblur="validateTextField('fNameContainer')" type="text" name="firstName" id="first-name" required class="appearance-none rounded outline outline-1 outline-mgray h-8 box-border p-2 focus:outline-green group-[.error]:invalid:outline-red peer">
+          <p class="text-sm mt-1 text-red hidden group-[.error]:peer-invalid:block">This field is required</p>
+        </div>
+    
+        <div class="flex flex-col group sm:max-w-[50%] w-full" id="lNameContainer">
+          <label for="last-name" class="required">Last Name</label>
+          <input oninvalid="validateTextField('lNameContainer'); event.preventDefault()" onblur="validateTextField('lNameContainer')" type="text" name="lastName" id="last-name" required class="appearance-none rounded outline outline-1 outline-mgray h-8 box-border p-2 focus:outline-green group-[.error]:invalid:outline-red peer">
+          <p class="text-sm mt-1 text-red hidden group-[.error]:peer-invalid:block">This field is required</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-col group" id="emailContainer">
+        <label for="email" class="required">Email Address</label>
+        <input oninvalid="validateTextField('emailContainer'); event.preventDefault()" onblur="validateTextField('emailContainer')" type="email" name="email" id="email" required class="appearance-none rounded outline outline-1 outline-mgray h-8 box-border p-2 focus:outline-green group-[.error]:invalid:outline-red peer">
+        <p class="text-sm mt-1 text-red hidden group-[.error]:peer-invalid:block">Please enter a valid email address</p>
+      </div>
+  
+      <div class="flex flex-col gap-2.5 group" id="queryContainer">
+        <p class="required">Query Type</p>
+        <div class="flex flex-col gap-2.5 peer sm:flex-row sm:justify-between">
+          <label for="general" class="rounded border border-mgray h-10 box-border px-4 flex items-center gap-3 has-[:checked]:border-green has-[:checked]:bg-lgreen hover:cursor-pointer sm:w-1/2">
+            <input oninvalid="validateTextField('queryContainer'); event.preventDefault()" type="radio" name="queryType" id="general" value="general" required class="checked:accent-green">
+            General Enquiry
+          </label>
+    
+          <label for="support" class="rounded border border-mgray h-10 box-border px-4 flex items-center gap-3 has-[:checked]:border-green has-[:checked]:bg-lgreen hover:cursor-pointer sm:w-1/2">
+            <input oninvalid="validateTextField('queryContainer'); event.preventDefault()" type="radio" name="queryType" id="support" value="support" required class="checked:accent-green">
+            Support Request
+          </label>
+        </div>
+
+        <p class="-mt-1.5 text-sm text-red hidden group-[.error]:block peer-has-[:checked]:hidden">Please select a query type</p>
+      </div>
+  
+      <div class="flex flex-col group" id="messageContainer">
+        <label for="message" class="required">Message</label>
+        <textarea oninvalid="validateTextField('messageContainer'); event.preventDefault()" name="message" id="message" required onblur="validateTextField('messageContainer')" class="appearance-none resize-none rounded outline outline-1 outline-mgray h-48 box-border p-2 focus:outline-green group-[.error]:invalid:outline-red peer sm:h-36"></textarea>
+        <p class="text-sm mt-1 text-red hidden group-[.error]:peer-invalid:block">This field is required</p>
+      </div>
+  
+      <div class="group" id="consentContainer">
+        <input oninvalid="validateTextField('consentContainer'); event.preventDefault()" type="checkbox" name="consent" id="consent" required onblur="validateTextField('consentContainer')" class="checked:accent-green hover:cursor-pointer peer">
+        <label for="consent" class="required hover:cursor-pointer">I consent to being contacted by the team</label>
+        <p class="text-sm mt-1 text-red hidden group-[.error]:block peer-checked:hidden">To submit this form, please consent to being contacted</p>
+      </div>
+      
+      <input type="submit" value="Submit" id="submit" class="bg-green text-white rounded-lg w-full self-center box-border p-3 hover:cursor-pointer hover:bg-[rgb(6_78_59)]">
+    </form>
+  </div>
+  
+  <!-- This field is required
+
+  Last Name
+  This field is required
+
+  Email Address
+  Please enter a valid email address
+  This field is required
+
+  Query Type
+  General Enquiry
+  Support Request
+  Please select a query type
+
+  Message
+  This field is required
+
+  
+  To submit this form, please consent to being contacted
+
+  Submit
+
+  Message Sent!
+  Thanks for completing the form. We'll be in touch soon! -->
+</body>
+</html>
