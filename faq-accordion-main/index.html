@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | FAQ accordion</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./index.js"></script>
+  <style>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @font-face {
+      font-family:"Work Sans";
+      src: url("./assets/fonts/WorkSans-VariableFont_wght.ttf");
+    }
+
+    @layer utilities {
+      :root {
+        font-size:16px;
+      }
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "light-pink":"hsl(275, 100%, 97%)",
+            "grayish-purple":"hsl(292, 16%, 49%)",
+            "dark-purple":"hsl(292, 42%, 14%)"
+          },
+          fontFamily: {
+            "work-sans":["Work Sans", "ui-serif", "sans-serif"]
+          },
+          backgroundImage: {
+            "mobile":"url('./assets/images/background-pattern-mobile.svg')",
+            "desktop":"url('./assets/images/background-pattern-desktop.svg')"
+          },
+          screens: {
+            "xs":"375px"
+          },
+          gridTemplateRows: {
+            "0":'0fr',
+            "open":'1fr'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-light-pink bg-mobile bg-no-repeat xs:bg-desktop xs:bg-repeat-x">
+  <!-- Container -->
+  <div class="font-work-sans w-full min-h-screen box-border p-4 flex justify-center items-center">
+    <!-- Menu -->
+    <div class="bg-white rounded-lg p-4 pb-0 w-96 sm:w-[36rem] flex-initial flex flex-col gap-4">
+      <!-- Header -->
+      <div class="flex gap-5 items-center">
+        <img src="./assets/images/icon-star.svg" alt="Star">
+        <h1 class=" font-bold text-3xl text-dark-purple">FAQs</h1>
+      </div>
+      <!-- Accordion -->
+      <div class="flex flex-col">
+        <!-- Element -->
+        <div data-open="false" id="accordion-1" class="group">
+          <div onclick="toggle('accordion-1');" class="flex hover:cursor-pointer group/1">
+            <h3 class="font-semibold text-[1.05rem] pb-4 group-hover/1:text-grayish-purple transition-all">What is Frontend Mentor, and how will it help me?</h3>
+            <img src="./assets/images/icon-plus.svg" alt="toggle" class="transition-all group-data-[open='true']:content-[url('./assets/images/icon-minus.svg')] ml-auto pl-6">
+          </div>
+          <div class="grid grid-rows-0 group-data-[open='true']:grid-rows-open group-data-[open='true']:pb-4 transition-all duration-500">
+            <p class="overflow-hidden">
+              Frontend Mentor offers realistic coding challenges to help developers improve their 
+              frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for 
+              all levels and ideal for portfolio building.
+            </p>
+          </div>
+        </div>
+
+        <hr class="pb-4">
+
+        <!-- Element -->
+        <div data-open="false" id="accordion-2" class="group">
+          <div onclick="toggle('accordion-2');" class="flex hover:cursor-pointer group/1">
+            <h3 class="font-semibold text-[1.05rem] pb-4 group-hover/1:text-grayish-purple transition-all">Is Frontend Mentor free?</h3>
+            <img src="./assets/images/icon-plus.svg" alt="toggle" class="transition-all group-data-[open='true']:content-[url('./assets/images/icon-minus.svg')] ml-auto pl-6">
+          </div>
+          <div class="grid grid-rows-0 group-data-[open='true']:grid-rows-open group-data-[open='true']:pb-4 transition-all duration-500">
+            <p class="overflow-hidden">
+              Yes, Frontend Mentor offers both free and premium coding challenges, with the free 
+              option providing access to a range of projects suitable for all skill levels.
+            </p>
+          </div>
+        </div>
+
+        <hr class="pb-4">
+
+        <!-- Element -->
+        <div data-open="false" id="accordion-3" class="group">
+          <div onclick="toggle('accordion-3');" class="flex hover:cursor-pointer group/1">
+            <h3 class="font-semibold text-[1.05rem] pb-4 group-hover/1:text-grayish-purple transition-all">Can I use Frontend Mentor projects in my portfolio?</h3>
+            <img src="./assets/images/icon-plus.svg" alt="toggle" class="transition-all group-data-[open='true']:content-[url('./assets/images/icon-minus.svg')] ml-auto pl-6">
+          </div>
+          <div class="grid grid-rows-0 group-data-[open='true']:grid-rows-open group-data-[open='true']:pb-4 transition-all duration-500">
+            <p class="overflow-hidden">
+              Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
+              way to showcase your skills to potential employers!
+            </p>
+          </div>
+        </div>
+
+        <hr class="pb-4">
+
+        <!-- Element -->
+        <div data-open="false" id="accordion-4" class="group">
+          <div onclick="toggle('accordion-4');" class="flex hover:cursor-pointer group/1">
+            <h3 class="font-semibold text-[1.05rem] pb-4 group-hover/1:text-grayish-purple transition-all">How can I get help if I'm stuck on a Frontend Mentor challenge?</h3>
+            <img src="./assets/images/icon-plus.svg" alt="toggle" class="transition-all group-data-[open='true']:content-[url('./assets/images/icon-minus.svg')] ml-auto pl-6">
+          </div>
+          <div class="grid grid-rows-0 group-data-[open='true']:grid-rows-open group-data-[open='true']:pb-4 transition-all duration-500">
+            <p class="overflow-hidden">
+              The best place to get help is inside Frontend Mentor's Discord community. There's a help 
+              channel where you can ask questions and seek support from other community members.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!-- I used padding instead of gaps, and I animated paddings to give the desired effect of not too much space in between -->
+<!-- Also justify-self doesn't work -->
+</body>
+</html>
