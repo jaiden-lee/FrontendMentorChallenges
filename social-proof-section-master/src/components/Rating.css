@@ -1,0 +1,46 @@
+.ratings-container {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1rem;
+}
+
+.rating {
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    gap:1rem;
+    padding:1rem;
+    flex: 0 1 auto;
+    width:24rem;
+    max-width:100%;
+    background-color:var(--light-grayish-magenta);
+    color:var(--very-dark-magenta);
+    border-radius:.5rem;
+    text-align:center;
+}
+
+.star-container {
+    display:flex;
+    gap: .5rem;
+}
+
+@media screen and (min-width:48rem) {
+    .ratings-container {
+        align-items:flex-end;
+    }
+    .ratings-container .second {
+        margin-right:1rem;
+    }
+    .ratings-container .third {
+        margin-right:2rem;
+    }
+    .rating {
+        flex-direction:row;
+        width:32rem;
+        gap:.25rem;
+        justify-content:space-evenly;
+    }
+}

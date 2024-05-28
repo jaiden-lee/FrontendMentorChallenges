@@ -1,0 +1,27 @@
+.page-container {
+    background-color:white;
+    box-sizing:border-box;
+    padding:1rem;
+    padding-block:4rem;
+    display:grid;
+    gap:3rem;
+    grid-template-columns:minmax(0,1fr);
+    background-image:url("./assets/images/bg-pattern-top-mobile.svg"), url("./assets/images/bg-pattern-bottom-mobile.svg");
+    background-position:top left, bottom right;
+    background-repeat:no-repeat;
+}
+
+@media screen and (min-width:48rem) {
+    .page-container {
+        background-image:url("./assets/images/bg-pattern-top-desktop.svg"), url("./assets/images/bg-pattern-bottom-desktop.svg");
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        padding:3rem;
+        width:90%;
+    }
+    #root {
+        display:flex;
+        align-items:center;
+        min-height:100vh;
+        justify-content:center;
+    }
+}
